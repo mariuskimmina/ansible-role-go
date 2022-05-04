@@ -1,0 +1,9 @@
+---
+go_version: '1.18.1'
+
+go_url: ''
+
+go_install_dir: ''
+
+# Directory to store files during installation
+go_download_dir: '/tmp/ansible/downloads'

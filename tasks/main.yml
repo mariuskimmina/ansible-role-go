@@ -1,0 +1,30 @@
+---
+- name: Check if go is already installed
+  ansible.builtin.stat:
+    path: /usr/local/go
+  register: go_installed
+
+- name: Remove go if it was already present
+  ansible.builtin.file:
+    path: /usr/local/go
+    state: absent
+  when: go_installed
+
+- name: Download go
+  ansible.builtin.get_url:
+    url: https://go.dev/dl/go1.18.1.linux-amd64.tar.gz
+    dest: /tmp/go.tar.gz
+    mode: '0777'
+
+- name: Ensure go tarball is present
+  ansible.builtin.file:
+    path: /tmp/go.tar.gz
+    state: file
+  register: go_downloaded
+
+- name: Install go
+  ansible.builtin.unarchive:
+    src: /tmp/go.tar.gz
+    dest: /usr/local
+    remote_src: yes
+  when: go_downloaded
