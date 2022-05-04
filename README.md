@@ -1,11 +1,24 @@
-# Ansible Role: Hugo
+# Ansible Role: Go
 
-> Not Ready yet - Work in Progress
-
-Installs hugo, the static site generator, with the extended version.
-
+Install Go, the programming language, on any Linux distrobution.
 
 ## Dependencies
 
-* [Go]()
-* [Git]()
+None
+
+## Example playbook
+
+```
+---
+- hosts: localhost
+  roles:
+    - { role: mariuskimmina.go }
+  become: true
+```
+
+## Tests
+
+Fully tested on:
+
+* Fedora 36
+* Ubuntu 20.04
